@@ -21,3 +21,6 @@ def generate_log(data):
 
     # STEP 4: Print a confirmation message with the filename
     print(f"Log written to {filename}")
+
+    # Return the filename so callers (and tests) can inspect/remove it
+    return filename
