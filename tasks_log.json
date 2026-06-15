@@ -7,16 +7,16 @@
     {
         "id": 2,
         "title": "quis ut nam facilis et officia qui",
-        "completed": false
+        "completed": true
     },
     {
         "id": 3,
         "title": "fugiat veniam minus",
-        "completed": false
+        "completed": true
     },
     {
         "id": 4,
         "title": "Deploy Python script to PyPi production",
-        "completed": false
+        "completed": true
     }
 ]
