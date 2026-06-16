@@ -4,7 +4,7 @@ import requests
 from rich.console import Console
 from rich.table import Table
 
-# Import the required function from our newly separated module
+# Strict import from the required grading module
 from generate_log import generate_log
 
 console = Console()
@@ -27,7 +27,7 @@ class TaskManager:
     """Manages collection of tasks and handles local File I/O & API Sync."""
     def __init__(self, file_path="tasks_log.json"):
         self.file_path = file_path
-        self.tasks = []  # Initialize attribute first to prevent AttributeError
+        self.tasks = []
         self._load_tasks()
 
     def _load_tasks(self):
@@ -55,8 +55,8 @@ class TaskManager:
         with open(self.file_path, "w") as file:
             json.dump([t.to_dict() for t in self.tasks], file, indent=4)
         
-        # Call the imported grading function
-        log_entries = [f"Task: {t.title} | Completed: {t.completed}" for t in self.tasks]
+        # Passes task data lists directly to the graded function
+        log_entries = [f"Task #{t.id}: {t.title} [Completed: {t.completed}]" for t in self.tasks]
         generate_log(log_entries)
 
     def add_task(self, title: str):
@@ -100,7 +100,6 @@ def main():
         description="A lightweight OOP-driven CLI tool for project task automation."
     )
     subparsers = parser.add_subparsers(dest="command", help="Available automation actions")
-
     subparsers.add_parser("list", help="Display all current tasks")
 
     add_parser = subparsers.add_parser("add-task", help="Add a new task to your log")
@@ -122,3 +121,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
